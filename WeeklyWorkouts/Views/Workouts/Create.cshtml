@@ -1,0 +1,66 @@
+﻿@model WeeklyWorkouts.Models.Workout
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Workout</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <!-- <label asp-for="WeekDay" class="control-label"></label>
+                <input asp-for="WeekDay" class="form-control" />-->
+                <label asp-for="WeekDay" class="control-label">Choose a day:</label>
+                <select asp-for="WeekDay" class="form-control">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+
+                <span asp-validation-for="WeekDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exercise" class="control-label"></label>
+                <input asp-for="Exercise" class="form-control" />
+                <span asp-validation-for="Exercise" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sets" class="control-label"></label>
+                <input asp-for="Sets" class="form-control" />
+                <span asp-validation-for="Sets" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reps" class="control-label"></label>
+                <input asp-for="Reps" class="form-control" />
+                <span asp-validation-for="Reps" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <p></p>
+            <div class="form-group">
+                <input type="submit" value="Create" class="button" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <p></p>
+    <a asp-action="Index" class="button">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

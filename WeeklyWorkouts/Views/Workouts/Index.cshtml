@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WeeklyWorkouts.Models.Workout>
+
+@{
+    ViewData["Title"] = "Workouts";
+    var modelJson = System.Text.Json.JsonSerializer.Serialize(Model);
+}
+
+<head>
+    <script src="~/js/site.js"></script>
+</head>
+
+<h1>Index</h1>
+
+<p class="workout">
+    <a asp-action="Create" class="button">Add</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WeekDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercise)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reps)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tbleHolder">
+
+        
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WeekDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exercise)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reps)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="buttonEdit">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="button">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="buttonDelete">Delete</a>
+            </td>
+       </tr>
+       }
+    </tbody>
+</table>
